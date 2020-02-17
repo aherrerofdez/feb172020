@@ -20,7 +20,6 @@ def merge(numbers):
     #now they are sorted and need to merge them
     i = 0 #for left
     j = 0 # for right
-    k = 0 #for merged
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
             merged.append(left[i])
@@ -28,16 +27,14 @@ def merge(numbers):
         else:
             merged.append(right[j])
             j += 1
-        k += 1
     while i < len(left):
         merged.append(left[i])
         i += 1
-        k += 1
 
     while j < len(right):
         merged.append(right[j])
         j += 1
-        k += 1
+
     return merged
 
 sorted = merge(numbers)
