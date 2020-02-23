@@ -1,35 +1,39 @@
-numbers=[]
-count=0
-while True:
-    if count >= 3:
-        break
-    number= input("Enter a number: ")
+import math
+
+#Function that calculates any triangle's area using Heron's formula
+def getAreaofTriangle(sides):
+    #Heron's formula requires to calculate the triangle's semi-perimeter(s)
+    s = (sides[0] + sides[1] + sides[2]) / 2
+    area = math.sqrt(s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]))
+    print("The area of this triangle is {} square units". format(round(area, 3)))
+
+#Function to get the type of triangle
+def getTypeofTriangle(sides):
+    #Check if it's a  triangle
+    if sides[2] > (sides[0] + sides[1]):
+        print("These segments cannot form a triangle")
+    else:
+        #Check if it's equilateral
+        if sides[0] == sides[1] == sides[2]:
+            print("Equilateral triangle")
+        elif sides[0] == sides[1] or sides[1] == sides[2]:
+            print("Isosceles triangle")
+        else:
+            print("Scalene triangle")
+        getAreaofTriangle(sides)
+
+#Get the sides of the triangle from the user
+sides = []
+count = 0
+
+while count < 3:
+    side = input("Enter a side of the triangle: ")
     try:
-        number= int(number)
+        side = int(side)
     except:
-        print("That was not a number")
+        print("Invalid input")
         continue
-    #We have a proper number
-    numbers.append(number)
+    sides.append(side)
     count += 1
-numbers.sort()
-# check if not triangle
-if numbers[0]+numbers[1]<numbers[2]:
-    print("it's not a triangle")
-    exit()
-# check if equilateral
-if numbers[0]==numbers[1] and numbers [1]== numbers[2]:
-    print(" it is an equilateral triangle")
-#check if isosels
-if numbers [0]==numbers[1] or numbers[1]== numbers[2]:
-    print("isosceles")
-#check if right angle
-if numbers[2]**2== numbers[0]**2+numbers[1]**2:
-    print("right angle")
-#check if obtue
-if numbers[2]**2> numbers[0]**2+numbers[1]**2:
-    print("obtuse angle")
-if numbers[2]**2< numbers[0]**2+numbers[1]**2:
-    print("acute angle")
-
-
+sides.sort()
+getTypeofTriangle(sides)

@@ -1,7 +1,7 @@
-string = input("Give me the text please")
+string = input("Enter text: ")
 
-if (string[::2] == string[1::2]):
-    print("They are all doubled ")
+if string[::3] == string[1::3] == string[2::3]:
+    print("All letters are tripled ")
 else:
-    print("They are not all doubled")
+    print("Not all letters are tripled")
 

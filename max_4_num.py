@@ -1,19 +1,30 @@
-numbers=[]
-count=0
+# Get number of inputs from user
 while True:
-    if count >= 4:
-        break
-    number= input("Enter a number: ")
+    num = input("How many numbers do you want to write? ")
     try:
-        number= int(number)
+        num = int(num)
+        break
+    except:
+        print("Invalid number")
+        continue
+
+numbers = []
+count = 0
+while True:
+    if count >= num:
+        break
+    number = input("Enter a number: ")
+    try:
+        number = int(number)
     except:
         print("That was not a number")
         continue
+
     #We have a proper number
     numbers.append(number)
     count += 1
 
 numbers.sort()
-print("The maximum is {} ".format(numbers[3]))
+print("The maximum is {} ".format(numbers[num-1]))
 
 
